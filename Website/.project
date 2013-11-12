@@ -3,7 +3,6 @@
 	<name>Website</name>
 	<comment></comment>
 	<projects>
-		<project>SemanticWeb</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

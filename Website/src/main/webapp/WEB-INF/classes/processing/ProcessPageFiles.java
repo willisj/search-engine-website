@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import classes.searchResult.PageHandler;
-import crawler.Page;
+import classes.crawler.Page;
 
 /**
  * Servlet implementation class ProcessPageFiles

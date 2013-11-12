@@ -21,7 +21,8 @@
 	<classpathentry exported="true" kind="lib" path="src/main/libraries/lucene-core-4.5.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="src/main/libraries/lucene-queryparser-4.5.1.jar"/>
 	<classpathentry kind="lib" path="src/main/libraries/jstl-1.2.jar"/>
-	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/SemanticWeb"/>
+	<classpathentry kind="lib" path="src/main/libraries/htmlcleaner-2.6.1.jar"/>
+	<classpathentry kind="lib" path="src/main/libraries/commons-lang3-3.1.jar"/>
 	<classpathentry kind="src" output="target/classes" path="src/main/java">
 		<attributes>
 			<attribute name="optional" value="true"/>
