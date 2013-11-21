@@ -12,6 +12,7 @@ import org.apache.commons.lang3.time.StopWatch;
 public class util {
 	static StopWatch timer = new StopWatch();
 	final protected static char[] hexArray = "0123456789ABCDEF".toCharArray();
+
 	// http://stackoverflow.com/questions/326390/how-to-create-a-java-string-from-the-contents-of-a-file
 	static public String readFile(String path, Charset encoding)
 			throws IOException {
@@ -21,7 +22,7 @@ public class util {
 
 	// http://stackoverflow.com/questions/9655181/convert-from-byte-array-to-hex-string-in-java
 	public static String bytesToHex(byte[] bytes) {
-		
+
 		char[] hexChars = new char[bytes.length * 2];
 		int v;
 		for (int j = 0; j < bytes.length; j++) {
@@ -31,38 +32,41 @@ public class util {
 		}
 		return new String(hexChars);
 	}
-	
-	public static long folderSize(String s){
+
+	public static long folderSize(String s) {
 		return folderSize(new File(s));
 	}
-	
-	
+
 	// http://stackoverflow.com/questions/2149785/size-of-folder-or-file
 	public static long folderSize(File source) {
-	    long length = 0;
-	    for (File file : source.listFiles()) {
-	        if (file.isFile())
-	            length += file.length();
-	        else
-	            length += folderSize(file);
-	    }
-	    return length;
+		long length = 0;
+		if (!source.exists()) {
+			writeLog("Directory Not Found: " + source.toPath(),true);
+			return 0;
+		}
+		for (File file : source.listFiles()) {
+			if (file.isFile())
+				length += file.length();
+			else
+				length += folderSize(file);
+		}
+		return length;
 	}
-	
-	public static StopWatch getTimer(){
+
+	public static StopWatch getTimer() {
 		return timer;
 	}
-	
-	public static void writeLog(String s){
-		writeLog(s,false);	
+
+	public static void writeLog(String s) {
+		writeLog(s, false);
 	}
-	
-	public static void writeLog(String s,boolean error){
-		s = timer.toString()+"\t" + s;
-		
-		if(error)
+
+	public static void writeLog(String s, boolean error) {
+		s = timer.toString() + "\t" + s;
+
+		if (error)
 			System.err.println(s);
 		else
-			System.out.println(s);		
+			System.out.println(s);
 	}
 }

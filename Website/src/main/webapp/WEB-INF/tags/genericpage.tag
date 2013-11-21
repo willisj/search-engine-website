@@ -13,7 +13,7 @@
 	<div id="wrapper"
 		style="width: 720px; margin: 0 auto; padding: 15px 20px; border: 5px solid #ddd; background: #eee; min-height: 600px">
 		<div id="pageheader">
-			<h1>Glorshnop</h1>
+			<h1>| grep The Internet</h1>
 			<jsp:invoke fragment="header" />
 		</div>
 		<div id="body">

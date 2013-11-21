@@ -12,18 +12,17 @@
 	<jsp:body>
         		<form action="SearchResultServlet" method="POST">
 			<p>
-				<input type="submit" name="Submit" value="Search" /><input
-					type="text" name="query" />
+				cat /mnt/internet | grep " 
+				<input value="${SearchQuery}" type="text" name="query" /> "
+				<input type="submit" name="Submit" value="Search" />
 
 			</p>
 		</form>
 		<div id="results"
 			style="border: 1px solid #ddd; padding: 5px 10px; margin: auto; min-height: 550px">
-
 			<p>
-				<strong>Query String: </strong>	${SearchQuery}
 			</p>
-			<hr style="color: #ddd;">
+			
 			${SearchResult}
 
 		</div>

@@ -15,7 +15,7 @@
     <session-timeout>30</session-timeout>
   </session-config>
   <welcome-file-list>
-    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>search.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
     <description></description>
@@ -33,8 +33,18 @@
     <servlet-name>ProcessPageFiles</servlet-name>
     <servlet-class>classes.processing.ProcessPageFiles</servlet-class>
   </servlet>
-    <servlet-mapping>
+  <servlet-mapping>
     <servlet-name>ProcessPageFiles</servlet-name>
     <url-pattern>/ProcessPageFiles</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CrawlerServlet</display-name>
+    <servlet-name>CrawlerServlet</servlet-name>
+    <servlet-class>classes.crawler.CrawlerServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CrawlerServlet</servlet-name>
+    <url-pattern>/CrawlerServlet</url-pattern>
   </servlet-mapping>
 </web-app>
