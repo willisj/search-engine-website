@@ -34,8 +34,12 @@ public class SearchResultServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		SearchResult sr = new SearchResult( request.getParameter("query"));
+		
 		request.setAttribute("SearchQuery",sr.getQueryString());
-		request.setAttribute("SearchResult",sr.formatResults());
+		if(sr.getResults())
+			request.setAttribute("SearchResult",sr.formatResults());
+		else
+			request.setAttribute("SearchResult","<p>Error: no results.</p>");
 		request.getRequestDispatcher("/search.jsp").forward(request, response);
 	}
 
