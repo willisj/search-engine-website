@@ -4,14 +4,14 @@ public class MasterConfig {
 	
 	
 	 // * Values for Windows Machine *//
-	private static char sep = '\\';
-	public final static int maxPagesBeforeSorting = 200;
-	public static final String searchEngineRoot = "C:\\Users\\Jordan\\Documents\\Store\\searchengine\\";
+	//private static char sep = '\\';
+	
+	//public static final String searchEngineRoot = "C:\\Users\\Jordan\\Documents\\Store\\searchengine\\";
 
 	
 	// *Values for Ubuntu Machine *//
-	// private static char sep = '/';
-	// public static final String searchEngineRoot = "/home/jordan/searchengine/";
+	 private static char sep = '/';
+	 public static final String searchEngineRoot = "/home/jordan/searchengine/";
 
 	
 	public static final String luceneStorePath = searchEngineRoot
@@ -21,7 +21,7 @@ public class MasterConfig {
 			+ "batch1"+sep+"linkFile";
 	
 	//* Crawling Config *//
-	
+	public final static int maxPagesBeforeSorting = 200;
 	
 	
 	
