@@ -1,14 +1,9 @@
 package classes.searchResult;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.Vector;
 import java.io.File;
 import java.io.IOException;
-
-import javax.servlet.jsp.jstl.core.Config;
 
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
@@ -28,16 +23,15 @@ import org.apache.lucene.util.Version;
 
 public class PageHandler {
 	final static Version matchVersion = Version.LUCENE_45;
-	final static String fsPath = classes.config.MasterConfig.luceneStorePath;
 	static Directory index;
-
+	//todo add variable to keep track of last update
 
 	
 	public static Vector<ResultEntry> search(String searchString, int maxHits)
 			throws IOException, ParseException {
 		StandardAnalyzer analyzer = new StandardAnalyzer(matchVersion);
 		Vector<ResultEntry> results = new Vector<ResultEntry>();
-		index = new SimpleFSDirectory(new File(fsPath));
+		index = new SimpleFSDirectory(new File(classes.config.MasterConfig.luceneStorePath));
 
 		// Create the query
 
@@ -47,7 +41,7 @@ public class PageHandler {
 		// perform the search
 
 		IndexReader reader = DirectoryReader.open(FSDirectory.open(new File(
-				fsPath)));
+				classes.config.MasterConfig.luceneStorePath)));
 		IndexSearcher searcher = new IndexSearcher(reader);
 		TopScoreDocCollector collector = TopScoreDocCollector.create(classes.config.MasterConfig.maxPagesBeforeSorting,
 				true);
@@ -64,14 +58,13 @@ public class PageHandler {
 			Document d = hitDocs[i];
 			ResultEntry entry = new ResultEntry();
 			entry.summary = "";// d.get("src");;
+			
+			if(d.getField("pagerank") != null)
+				entry.pageRank = d.getField("pagerank").numericValue().doubleValue();
 			if(d.getField("globalIn") != null)
 				entry.globalIn = d.getField("globalIn").numericValue().longValue();
 			if(d.getField("globalOut") != null)
 				entry.globalOut =  d.getField("globalOut").numericValue().longValue();
-			if(d.getField("localIn") != null)
-				entry.localIn =  d.getField("localIn").numericValue().longValue();
-			if(d.getField("localOut") != null)
-				entry.localOut = d.getField("localOut").numericValue().longValue();
 			entry.url = d.get("url");
 			entry.title= d.get("title");
 			results.add(entry);

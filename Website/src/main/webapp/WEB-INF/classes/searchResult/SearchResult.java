@@ -52,10 +52,11 @@ public class SearchResult extends SimpleTagSupport {
 		for (ResultEntry r : results) {
 			out += "<div class='result'>" + "<strong><a href='" + r.url + "'>"
 					+ r.title + "</a></strong>" + "<br><sub><a href='" + r.url
-					+ "'>" + r.url + "</a>"
+					+ "'>" + r.url.substring(0,Math.min(60, r.url.length())) + "</a>"
 					//+"Local(In: <i>"+ r.localIn + "</i> Out: <i>" + r.localOut + "</i>) |"
-					+ "<span class='linkCounts'> Global(In: <i>" + r.globalIn + "</i> Out: <i>"
-					+ r.globalOut + "</i>)</span></sub>" + "<p class='summaryText'>"
+					+ "<span class='linkCounts'> PR: "+r.pageRank//+" Global(In: <i>" + r.globalIn + "</i> Out: <i>"
+					//+ r.globalOut + "</i>)"
+							+ "</span></sub>" + "<p class='summaryText'>"
 					+ lorem[i++] + "</p>" + "</div>";
 			if (i == lorem.length)
 				i = 0;
